@@ -1,0 +1,2 @@
+nginx_package_state: present
+nginx_service_state: started

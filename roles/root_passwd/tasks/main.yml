@@ -1,0 +1,5 @@
+- name: 'Set Root Password'
+  user:
+    name: root
+    password: '{{ root_passwd | password_hash("sha512") }}'
+  when: not not root_passwd

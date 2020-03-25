@@ -1,0 +1,5 @@
+- name: Install on RedHat
+  yum:
+    name: cowsay
+    state: '{{ cowsay_state }}'
+  when: ansible_os_family == 'RedHat'

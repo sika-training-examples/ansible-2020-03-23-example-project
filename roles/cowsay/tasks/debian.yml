@@ -1,0 +1,6 @@
+- name: Install on Debian
+  apt:
+    name: cowsay
+    update_cache: yes
+    state: '{{ cowsay_state }}'
+  when: ansible_os_family == 'Debian'

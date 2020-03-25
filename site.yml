@@ -1,0 +1,28 @@
+---
+- name: Global Servers
+  hosts: all
+
+  vars:
+    sshd_password_authentication: 'yes'
+    root_passwd: asdfasdf
+
+  roles:
+    - cowsay
+    - sshd
+    - root_passwd    
+
+- name: Setup vm0
+  hosts: vm0.sikademo.com
+  vars:
+    nginx_site_first_name: Ondrej 
+    nginx_site_last_name: Sika 
+  roles:
+    - nginx-site
+
+- name: Setup vm1
+  hosts: vm1.sikademo.com
+  vars:
+    nginx_site_first_name: '{{ vm1_first_name | default("John") }}' 
+    nginx_site_last_name: '{{ vm1_last_name | default("Doe") }}' 
+  roles:
+    - nginx-site
